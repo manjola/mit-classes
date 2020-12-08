@@ -1,0 +1,17 @@
+;;;Project 2 Code
+;;;Manushaqe Muco (manjola@mit.edu)
+
+(define ((mercury-state-deriv e epsilon) state)
+  (let ((theta (ref state 1))
+	(thetadot (ref state 2))
+	(f (ref state 3)))
+    (let ((aoverR (/ (+ 1 (* e (cos f))) (- 1 (square e)))))
+      (up 1
+	  thetadot
+	  (* -1/2
+	     (/ (square epsilon) 2)
+	     (cube aoverR)
+	     (sin (* 2 (- theta f))))
+	  (* (sqrt (- 1 (square e)))
+	     (square aoverR))))))
+
